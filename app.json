@@ -1,0 +1,15 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/efk/efk",
+    "pages/github/github",
+    "pages/csdn/csdn",
+    "pages/paper/paper"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#35495e",
+    "navigationBarTitleText": "个人简介",
+    "navigationBarTextStyle":"write"
+  }
+}

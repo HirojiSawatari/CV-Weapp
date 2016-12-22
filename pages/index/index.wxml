@@ -1,0 +1,48 @@
+<!-- 主页面结构 -->
+<view class="container">
+    <!-- 图片轮播 -->
+    <view class="slide">
+        <swiper indicator-dots="true"
+        autoplay="true" interval="8000" duration="1000">
+            <block wx:for="{{imgUrls}}">
+                <swiper-item>
+                    <image src="{{item}}" class="slide-image" width="355" height="150" mode="aspectFill"/>
+                </swiper-item>
+            </block>
+        </swiper>
+        <!-- 标题 -->
+        <view class="header">
+            <text class="title">何韬个人简介</text>
+            <text class="description">2016年版</text>
+        </view>
+    </view>
+
+
+    <!-- 链接按钮 -->
+    <view class="items">
+        <navigator url="../efk/efk?name=Essay for KT">
+            <view class="item">
+                <text class="item-text">个人主页</text>
+                <image class="item-image" src="/images/arrowright.png" mode="aspectFill"></image>
+            </view>
+        </navigator>
+        <navigator url="../github/github?name=GitHub 仓库">
+            <view class="item">
+                <text class="item-text">GitHub 仓库</text>
+                <image class="item-image" src="/images/arrowright.png" mode="aspectFill"></image>
+            </view>
+        </navigator>
+        <navigator url="../csdn/csdn?name=CSDN 博客">
+            <view class="item">
+                <text class="item-text">CSDN 博客</text>
+                <image class="item-image" src="/images/arrowright.png" mode="aspectFill"></image>
+            </view>
+        </navigator>
+        <navigator url="../paper/paper?name=科研论文">
+            <view class="item">
+                <text class="item-text">科研论文</text>
+                <image class="item-image" src="/images/arrowright.png" mode="aspectFill"></image>
+            </view>
+        </navigator>
+    </view>
+</view>>
