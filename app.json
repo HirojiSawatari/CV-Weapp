@@ -4,12 +4,39 @@
     "pages/efk/efk",
     "pages/github/github",
     "pages/csdn/csdn",
-    "pages/paper/paper"
+    "pages/paper/paper",
+    "pages/contact/contact"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#35495e",
     "navigationBarTitleText": "个人简介",
     "navigationBarTextStyle":"write"
+  },
+  "tabBar": {
+    "color": "#ccc",
+    "selectedColor": "#35495e",
+    "borderStyle": "white",
+    "backgroundColor": "#f9f9f9",
+    "list": [
+      {
+        "text": "主页",
+        "pagePath": "pages/index/index",
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/index-actived.png"
+      },
+      {
+        "text": "简历",
+        "pagePath": "pages/cv/cv",
+        "iconPath": "images/cv.png",
+        "selectedIconPath": "images/cv-actived.png"
+      },
+      {
+        "text": "联系",
+        "pagePath": "pages/contact/contact",
+        "iconPath": "images/contact.png",
+        "selectedIconPath": "images/contact-actived.png"
+      }
+    ]
   }
 }

@@ -1,0 +1,14 @@
+<template name="item">
+  <view class="item">
+    <view class="meta">
+      <text class="title">{{ item[0] }}</text>
+      <text class="sub-title">{{ item[1] }}</text>
+    </view>
+  </view>
+</template>
+
+<template name="csdn-list">
+  <scroll-view scroll-y="true" class="page-body" bindscrolltolower="loadMore">
+    <template is="item" data="{{ item }}" wx:for="{{ essays }}"></template>  
+  </scroll-view>>
+</template>

@@ -1,0 +1,3 @@
+<import src="../common/git-list.wxml"></import>
+
+<template is="git-list" data="{{ list }}"></template>

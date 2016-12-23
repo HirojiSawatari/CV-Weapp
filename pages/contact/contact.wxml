@@ -1,0 +1,14 @@
+<view class="container">
+  <view class="header">
+    <text class="text">{{ title }}</text>
+  </view>
+
+  <view class="info">
+      <text class="info-text">联系电话：{{ myInfo.phone }}</text>
+      <text class="info-text">电子邮箱：{{ myInfo.email }}</text>
+    </view>
+
+  <view>
+    <image class="qrcode" src="{{ myInfo.qrcode }}" mode="aspectFit"></image>
+  </view>
+</view>
