@@ -5,6 +5,7 @@
     "pages/github/github",
     "pages/csdn/csdn",
     "pages/paper/paper",
+    "pages/cv/cv",
     "pages/contact/contact"
   ],
   "window":{
