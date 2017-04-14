@@ -1,0 +1,313 @@
+<view>
+  <text class="title">Android开发获取设备硬件相关信息</text>
+</view>
+<view>
+  <text class="sub-title">2016-11-22 22:25</text>
+</view>
+<view>
+  <text class="text">在安卓开发过程中，有时需要获取设备硬件信息以及网络信息，包括设备型号、CPU信息、RAM以及ROM信息、摄像头信息、分辨率、运营商信息等。网上逐条搜索相关方法比较繁琐，因此本文总结了相关信息的具体获取方法。本文所有代码能获取的设备信息如下图所示：</text>
+</view>
+<view class="imageview">
+  <image class="pic" src="https://hirojisawatari.github.io/images/2_1.png" mode="aspectFit"></image>
+</view>
+<view>
+  <text class="text">首先在manifest.xml添加以下权限：</text>
+</view>
+<view>
+  <text class="code">uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"
+uses-permission android:name="android.permission.ACCESS_WIFI_STATE"
+uses-permission android:name="android.permission.CAMERA"
+uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"
+uses-permission android:name="android.permission.CHANGE_WIFI_STATE"
+uses-permission android:name="android.permission.INTERNET"
+uses-permission android:name="android.permission.RESTART_PACKAGES"
+uses-permission android:name="android.permission.READ_LOGS"
+uses-permission android:name="android.permission.READ_PHONE_STATE"</text>
+</view>
+<view>
+  <text class="text">下面开始逐一获取设备相关信息分条目添加至某一FragmentPage中的LinearLayout pwTable中。</text>
+</view>
+<view>
+  <text class="text">通过以下代码获取设备型号：</text>
+</view>
+<view>
+  <text class="code">TextView p_model = new TextView(getActivity());
+p_model.setTextColor(Color.BLACK);
+p_model.setText("手机型号：" + android.os.Build.MODEL);
+pwTable.addView(p_model);</text>
+</view>
+<view>
+  <text class="text">通过以下代码获取手机品牌：</text>
+</view>
+<view>
+  <text class="code">TextView p_brand = new TextView(getActivity());
+p_brand.setTextColor(Color.BLACK);
+p_brand.setText("手机品牌：" + android.os.Build.BRAND);
+pwTable.addView(p_brand);</text>
+</view>
+<view>
+  <text class="text">通过以下代码获取手机制造商，此条目信息通常情况与手机品牌一致：</text>
+</view>
+<view>
+  <text class="code">TextView p_company = new TextView(getActivity());
+p_company.setTextColor(Color.BLACK);
+p_company.setText("制造商：" + android.os.Build.MANUFACTURER);
+pwTable.addView(p_company);</text>
+</view>
+<view>
+  <text class="text">通过以下代码获取安卓版本信息：</text>
+</view>
+<view>
+  <text class="code">TextView p_and = new TextView(getActivity());
+p_and.setTextColor(Color.BLACK);
+p_and.setText("Android版本号：" + android.os.Build.VERSION.RELEASE);
+pwTable.addView(p_and);
+</text>
+</view>
+<view>
+  <text class="text">通过以下代码获取CPU型号信息：</text>
+</view>
+<view>
+  <text class="code">TextView p_cpuname = new TextView(getActivity());
+p_cpuname.setTextColor(Color.BLACK);
+p_cpuname.setText("CPU型号：" + android.os.Build.HARDWARE);
+pwTable.addView(p_cpuname);
+</text>
+</view>
+<view>
+  <text class="text">通过以下代码获取CPU架构信息：</text>
+</view>
+<view>
+  <text class="code">TextView p_cputype = new TextView(getActivity());
+p_cputype.setTextColor(Color.BLACK);
+p_cputype.setText("CPU架构：" + android.os.Build.CPU_ABI);
+pwTable.addView(p_cputype);
+</text>
+</view>
+<view>
+  <text class="text">通过以下代码获取CPU核心数信息：</text>
+</view>
+<view>
+  <text class="code">int cores;
+try{
+	cores = new File("/sys/devices/system/cpu/").listFiles(CPU_FILTER).length;
+} catch(SecurityException e){
+	cores = 0;
+} catch(NullPointerException e){
+	cores = 0;
+}
+TextView p_cpucore = new TextView(getActivity());
+p_cpucore.setTextColor(Color.BLACK);
+p_cpucore.setText("CPU核心数：" + cores);
+pwTable.addView(p_cpucore);
+</text>
+</view>
+<view>
+  <text class="text">通过以下代码获取CPU最高频率信息：</text>
+</view>
+<view>
+  <text class="code">int maxRate1 = 0;
+double temp;
+String maxRate = "0";
+try {
+	FileReader fr1 = new FileReader("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq");
+	BufferedReader br1 = new BufferedReader(fr1);
+	String text1 = br1.readLine();
+	maxRate1 = Integer.parseInt(text1);
+	temp = maxRate1 / 1000.0;
+	maxRate = String.format("%.1f", temp);
+	br1.close();
+} catch (IOException e) {
+	// TODO 自动生成的 catch 块
+}
+TextView p_cpurate = new TextView(getActivity());
+p_cpurate.setTextColor(Color.BLACK);
+p_cpurate.setText("CPU最高频率：" + maxRate + "MHz");
+pwTable.addView(p_cpurate);
+</text>
+</view>
+<view>
+  <text class="text">通过以下代码获取CPU最低频率信息：</text>
+</view>
+<view>
+  <text class="code">int minRate1 = 0;
+String minRate = "0";
+try {
+	FileReader fr2 = new FileReader("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_min_freq");
+	BufferedReader br2 = new BufferedReader(fr2);
+	String text2 = br2.readLine();
+	minRate1 = Integer.parseInt(text2);
+	temp = minRate1 / 1000.0;
+	minRate = String.format("%.1f", temp);
+	br2.close();
+} catch (IOException e) {
+	// TODO 自动生成的 catch 块
+}
+TextView p_cpurate2 = new TextView(getActivity());
+p_cpurate2.setTextColor(Color.BLACK);
+p_cpurate2.setText("CPU最低频率：" + minRate + "MHz");
+pwTable.addView(p_cpurate2);
+</text>
+</view>
+<view>
+  <text class="text">通过以下代码获取CPU温度：
+  </text>
+</view>
+<view>
+  <text class="code">String text4 = "0";
+try {
+	FileReader fr4 = new FileReader("/sys/class/thermal/thermal_zone9/subsystem/thermal_zone9/temp");
+	BufferedReader br4 = new BufferedReader(fr4);
+	text4 = br4.readLine();
+	br4.close();
+} catch (IOException e) {
+	// TODO 自动生成的 catch 块
+}
+TextView p_temp = new TextView(getActivity());
+p_temp.setTextColor(Color.BLACK);
+p_temp.setText("CPU温度：" + text4 + "℃");
+pwTable.addView(p_temp);
+</text>
+</view>
+<view>
+  <text class="text">通过以下代码获取RAM大小信息：
+  </text>
+</view>
+<view>
+  <text class="code">int memorySize = 0;
+String ramSize = "0";
+try {
+	FileReader fr3 = new FileReader("/proc/meminfo");
+	BufferedReader br3 = new BufferedReader(fr3);
+	String memoryLine = br3.readLine();
+	String subMemoryLine = memoryLine.substring(memoryLine.indexOf("MemTotal:"));
+	memorySize = Integer.parseInt(subMemoryLine.replaceAll("\\D+", ""));
+	temp = memorySize / 1000000.0;
+	ramSize = String.format("%.1f", temp);
+	br3.close();
+} catch (IOException e) {
+	// TODO 自动生成的 catch 块
+}
+TextView p_ram = new TextView(getActivity());
+p_ram.setTextColor(Color.BLACK);
+p_ram.setText("RAM大小：" + ramSize + "GB");
+pwTable.addView(p_ram);
+  </text>
+</view>
+<view>
+  <text class="text">通过以下代码获取ROM大小信息：
+  </text>
+</view>
+<view>
+  <text class="code">StatFs stat = new StatFs(Environment.getExternalStorageDirectory().getPath());
+long blockSize = stat.getBlockSize();
+long totalBlocks = stat.getBlockCount();
+long romSize1 = blockSize * totalBlocks;
+temp = romSize1 / 1000000000.0;
+String romSize = String.format("%.1f", temp);
+TextView p_rom = new TextView(getActivity());
+p_rom.setTextColor(Color.BLACK);
+p_rom.setText("ROM大小：" + romSize + "GB");
+pwTable.addView(p_rom);
+  </text>
+</view>
+<view>
+  <text class="text">通过以下代码获取电池容量信息：
+  </text>
+</view>
+<view>
+  <text class="code">PowerProfile pp = new PowerProfile(getActivity());
+int batteryRate = (int) pp.getBatteryCapacity();
+TextView p_batteryrate = new TextView(getActivity());
+p_batteryrate.setTextColor(Color.BLACK);
+p_batteryrate.setText("电池容量：" + batteryRate + "mAh");
+pwTable.addView(p_batteryrate);
+  </text>
+</view>
+<view>
+  <text class="text">通过以下代码获取前置摄像头像素信息：
+  </text>
+</view>
+<view>
+  <text class="code">TextView p_front = new TextView(getActivity());
+p_front.setTextColor(Color.BLACK);
+p_front.setText("前置摄像头像素：" + CameraUtils.getCameraPixels(CameraUtils.HasFrontCamera()));
+pwTable.addView(p_front);
+  </text>
+</view>
+<view>
+  <text class="text">通过以下代码获取后置摄像头像素信息：
+  </text>
+</view>
+<view>
+  <text class="code">TextView p_back = new TextView(getActivity());
+p_back.setTextColor(Color.BLACK);
+p_back.setText("后置摄像头像素：" + CameraUtils.getCameraPixels(CameraUtils.HasBackCamera()));
+pwTable.addView(p_back);
+  </text>
+</view>
+<view>
+  <text class="text">通过以下代码获取屏幕分辨率信息（有虚拟按键时会有误差）：
+  </text>
+</view>
+<view>
+  <text class="code">WindowManager windowManager = getActivity().getWindowManager();    
+Display display = windowManager.getDefaultDisplay();    
+int screenWidth = screenWidth = display.getWidth();    
+int screenHeight = screenHeight = display.getHeight();
+TextView p_screen = new TextView(getActivity());
+p_screen.setTextColor(Color.BLACK);
+p_screen.setText("屏幕分辨率：" + screenHeight + "×" + screenWidth);
+pwTable.addView(p_screen);
+  </text>
+</view>
+<view>
+  <text class="text">通过以下代码获取本机号码信息（双卡手机此方法只能获取卡1号码）：
+  </text>
+</view>
+<view>
+  <text class="code">TextView p_num = new TextView(getActivity());
+p_num.setTextColor(Color.BLACK);
+p_num.setText("本机号码：" + num);
+pwTable.addView(p_num);
+  </text>
+</view>
+<view>
+  <text class="text">通过以下代码获取运营商名称（同样此方法只能获取卡1运营商）：
+  </text>
+</view>
+<view>
+  <text class="code">TextView p_nm = new TextView(getActivity());
+p_nm.setTextColor(Color.BLACK);
+p_nm.setText("运营商名称：" + nm);
+pwTable.addView(p_nm);
+  </text>
+</view>
+<view>
+  <text class="text">通过以下代码获取IMEI码（同样获取的是卡1的IMEI码）：
+  </text>
+</view>
+<view>
+  <text class="code">TextView p_imei = new TextView(getActivity());
+p_imei.setTextColor(Color.BLACK);
+p_imei.setText("IMEI码：" + imei);
+pwTable.addView(p_imei);
+  </text>
+</view>
+<view>
+  <text class="text">通过以下代码获取手机MAC地址：
+  </text>
+</view>
+<view>
+  <text class="code">WifiManager wifiMng = (WifiManager) getActivity().getSystemService(Context.WIFI_SERVICE);
+WifiInfo wifiInfor = wifiMng.getConnectionInfo();
+TextView p_mac = new TextView(getActivity());
+p_mac.setTextColor(Color.BLACK);
+p_mac.setText("MAC地址：" + wifiInfor.getMacAddress());
+pwTable.addView(p_mac);
+  </text>
+</view>
+<view>
+  <text class="text">具体实际应用请见我的GitHub：FragmentPage2.java
+  </text>
+</view>

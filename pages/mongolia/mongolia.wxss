@@ -1,0 +1,82 @@
+.pic {
+  width: 100%;
+  text-align: center;
+}
+
+.imageview {
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+}
+
+.title {
+  display: flex;
+  margin-top: 40rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+  text-align: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.sub {
+  display: flex; 
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  font-size: 20rpx;
+  text-align: center;
+}
+
+.text {
+  display: flex; 
+  margin-top: 25rpx;
+  margin-bottom: 35rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  font-size: 30rpx;
+}
+
+.first {
+  display: flex; 
+  margin-top: 25rpx;
+  margin-bottom: 35rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  font-size: 35rpx;
+  font-weight: bold;
+}
+
+.second {
+  display: flex; 
+  margin-top: 25rpx;
+  margin-bottom: 35rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  font-size: 33rpx;
+  font-weight: bold;
+}
+
+.third {
+  display: flex; 
+  margin-top: 25rpx;
+  margin-bottom: 35rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.ref {
+  display: flex; 
+  margin-top: 25rpx;
+  margin-bottom: 35rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  font-size: 25rpx;
+}

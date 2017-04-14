@@ -49,6 +49,12 @@
   color: #c0c0c0
 }
 
+.item .meta .author {
+  display: block;
+  margin-bottom: 15rpx;
+  font-size: 27rpx;
+}
+
 .item .lang text{
   display: inline-block;
   width: 120rpx;

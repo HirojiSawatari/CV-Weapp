@@ -6,7 +6,12 @@
     "pages/csdn/csdn",
     "pages/paper/paper",
     "pages/cv/cv",
-    "pages/contact/contact"
+    "pages/contact/contact",
+    "pages/mongolia/mongolia",
+    "pages/android/android",
+    "pages/scrapy1/scrapy1",
+    "pages/scrapy2/scrapy2",
+    "pages/scrapy3/scrapy3"
   ],
   "window":{
     "backgroundTextStyle":"light",

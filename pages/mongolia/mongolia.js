@@ -3,7 +3,7 @@ Page({
     name: ''
   },
   onLoad: function(options) {
-    this.data.name = options.name  
+    this.data.name = options.name 
     var that = this 
     wx.showToast({ 
       title: '加载中', 
@@ -12,6 +12,6 @@ Page({
     }) 
   },
   onReady () {
-    wx.setNavigationBarTitle({ title: '简历'})
+    wx.setNavigationBarTitle({ title: '十三世纪上半叶蒙古高原气候变化特征与成因分析' })
   }
 })

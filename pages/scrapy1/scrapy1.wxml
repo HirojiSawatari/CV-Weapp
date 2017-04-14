@@ -1,0 +1,54 @@
+<view>
+  <text class="title">Scrapy爬虫+Tkinter爬取天猫热门商品（一）</text>
+</view>
+<view>
+  <text class="sub-title">2016-12-17 23:28</text>
+</view>
+<view>
+  <text class="first">一、引言</text>
+</view>
+<view>
+  <text class="text">每当双十一、双十二，看着淘宝、天猫、京东网页上琳琅满目的商品，经常有人会因为选择困难症不知道该购买什么好。而且购物网站商品的排列顺序经常会受到人为控制。因此，一个具有通过输入关键字，筛选相关热门产品并按热门程度排序的程序是有存在意义的。本程序以天猫为例，使用Python语言开发，利用Scrapy框架爬取网页信息，利用Tkinter框架构建程序GUI。源代码已上传至GitHub：https://github.com/HirojiSawatari/FindGoods。最终界面如下所示：</text>
+</view>
+<view class="imageview">
+  <image class="pic" src="https://hirojisawatari.github.io/images/3_1.png" mode="aspectFit"></image>
+</view>
+<view>
+  <text class="first">二、框架安装</text>
+</view>
+<view>
+  <text class="text">Tkinter框架为内置模块，无需额外安装，而Scrapy框架安装方法见官方链接：https://doc.scrapy.org/en/latest/intro/install.html</text>
+</view>
+<view>
+  <text class="first">三、Scrapy配置</text>
+</view>
+<view>
+  <text class="text">构建项目后，由于天猫具有反爬取措施，首先需要在配置文件settings.py中输入以下代码：</text>
+</view>
+<view>
+  <text class="code"># 绕过天猫robots.txt  
+ROBOTSTXT_OBEY = False  
+  
+# 禁止cookies,防止被ban  
+COOKIES_ENABLED = False  
+  
+# 伪装chrome  
+USER_AGENT = 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.89 Safari/537.36'
+</text>
+</view>
+<view>
+  <text class="text">同时，为了输出爬取得到的信息，同样需要在setting.py中输入输出文件信息：</text>
+</view>
+<view>
+  <text class="code"># Output .csv  
+FEED_URI = u'goods.csv'  
+FEED_FORMAT = 'CSV' 
+</text>
+</view>
+<view>
+  <text class="text">配置文件配置完毕，接下来开始爬取工作请见下一篇博文：
+  </text>
+</view>
+<view>
+  <text class="text">Scrapy爬虫+Tkinter爬取天猫热门商品（二）</text>
+</view>

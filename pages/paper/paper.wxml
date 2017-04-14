@@ -1,4 +1,3 @@
-<view class="page-header">
-  <text class="page-header-text">本人发表论文</text>
-</view>
-<text>待建设</text>
+<import src="../common/paper-list.wxml"></import>
+
+<template is="paper-list" data="{{ essays }}"></template>

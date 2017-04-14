@@ -1,0 +1,82 @@
+.pic {
+  margin-top: 60rpx;
+  height: 300rpx;
+  width: 100%;
+}
+
+.title {
+  display: flex;
+  margin-top: 60rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  border-bottom: 3rpx solid #2894FF;
+}
+
+.title text {
+  padding: 10rpx;
+  font-size: 35rpx;
+  font-weight: bold;
+}
+
+.detail {
+  margin-top: 25rpx;
+  margin-bottom: 35rpx;
+  margin-right: 50rpx;
+}
+
+.detail text {
+  display: block; 
+  font-size: 30rpx;
+  margin-top: 15rpx;
+  margin-left: 50rpx;
+}
+
+.texttitle {
+  font-weight: bold;
+}
+
+.schdetail {
+  display: flex;
+  flex: 1;
+  margin-top: 25rpx;
+  margin-right: 50rpx;
+  margin-bottom: 35rpx;
+}
+
+.schtext {
+  flex: 1;
+}
+
+.sch {
+  display: block; 
+  font-weight: bold;
+  font-size: 35rpx;
+  margin-left: 50rpx;
+}
+
+.bac {
+  display: block; 
+  font-size: 27rpx;
+  margin-top: 15rpx;
+  margin-left: 50rpx;
+}
+
+.sub {
+  display: block; 
+  font-size: 30rpx;
+  margin-top: 15rpx;
+  margin-left: 50rpx;
+}
+
+.yea {
+  display: block; 
+  font-size: 23rpx;
+  margin-top: 15rpx;
+  margin-left: 50rpx;
+  color: #888;
+}
+
+.logo {
+  width: 90rpx;
+  height: 90rpx;
+}

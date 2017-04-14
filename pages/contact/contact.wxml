@@ -4,6 +4,7 @@
   </view>
 
   <view class="info">
+      <text class="info-text">地址：北京市海淀区成府路209号中楼525室</text>
       <text class="info-text">联系电话：{{ myInfo.phone }}</text>
       <text class="info-text">电子邮箱：{{ myInfo.email }}</text>
     </view>

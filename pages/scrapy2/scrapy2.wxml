@@ -1,0 +1,137 @@
+<view>
+  <text class="title">Scrapy爬虫+Tkinter爬取天猫热门商品（二）</text>
+</view>
+<view>
+  <text class="sub-title">2016-12-18 00:00</text>
+</view>
+<view>
+  <text class="first">四、开始爬取</text>
+</view>
+<view>
+  <text class="text">首先建立spider，爬取之前，设置name，爬取网站url等信息，并设置爬取时间间隔防止被ban。</text>
+</view>
+<view>
+  <text class="code">name = "FindGoods"  
+download_delay = 4  
+allowed_domains = ["tmall.com"]  
+start_urls = [  
+    "https://www.tmall.com/"  
+]  </text>
+</view>
+<view>
+  <text class="text">确定我们需要爬取的商品相关信息。观察天猫搜素结果页，我们可以获取到的信息包括商品名称、店铺名称、价格、月成交量和评论数。为了实现之后点击item跳转购买界面的功能，我们还应当获取该商品购买界面的url信息。此外，我们还需预留分数字段以存储根据商品成交量和评论数计算得到的分数信息。确定爬取信息之后定义item.py如下：</text>
+</view>
+<view>
+  <text class="code">name = Field()  
+shop = Field()  
+price = Field()  
+trading = Field()  
+review = Field()  
+url = Field()  
+score = Field() </text>
+</view>
+<view>
+  <text class="text">继续观察天猫搜素结果页，我们可以通过审查页面要素得到我们需得到的商品信息在页面中的位置。Scrapy中页面位置信息通过xpath获取。由于天猫电器城情况特殊，我们还需要单独对电子产品页面进行单独分析。最终分析得到的要素爬取xpath信息如下：</text>
+</view>
+<view>
+  <text class="code">gifts = sel.xpath('//*[@id="J_ItemList"]/div[@class="product  "]')  
+for gift in gifts:  
+    name = gift.xpath('div/p[@class="productTitle"]/a/@title').extract()  
+    # 天猫电器城HTML结构不同  
+    if not name:  
+        name = gift.xpath('div/div[@class="productTitle productTitle-spu"]/a[1]/text()').extract()  
+  
+    shop = gift.xpath('div/div[@class="productShop"]/a[@class="productShop-name"]/text()').extract()  
+    price = gift.xpath('div/p[@class="productPrice"]/em/@title').extract()  
+    trading = gift.xpath('div/p[@class="productStatus"]/span[1]/em/text()').extract()  
+    review = gift.xpath('div/p[@class="productStatus"]/span[2]/a/text()').extract()  
+    url = gift.xpath('div/p[@class="productTitle"]/a/@href').extract()  
+    if not url:  
+        url = gift.xpath('div/div[@class="productTitle productTitle-spu"]/a[1]/@href').extract() </text>
+</view>
+<view>
+  <text class="text">获取信息后需要存储，同时计算商品评分。我们此处评分标准采用（月交易量×2+评论数）的方法计算。因为在html中获取的月交易量信息和评论数信息可能带有中文字符，例如“万”、“笔”等，我们还需剔除这些无关信息后转换为float数据类型进行计算。具体代码如下：</text>
+</view>
+<view>
+  <text class="code"># sys.getfilesystemencoding()获得本地编码（mbcs编码）  
+item['name'] = [na.encode(sys.getfilesystemencoding()) for na in name]  
+  
+# 去掉商店名末尾的\n换行符（有两个\n）  
+tempshop = str(shop[0].encode(sys.getfilesystemencoding()))  
+item['shop'] = tempshop.strip('\n')  
+  
+item['price'] = price  
+item['url'] = 'https:' + url[0]  
+  
+# 天猫电器城少数商品无交易量信息  
+tradnum = 0  
+if trading:  
+    # 在搜索页无法获取交易量详细数字，需转化  
+    tradstr = str(trading[0].encode(sys.getfilesystemencoding()))  
+    item['trading'] = tradstr  
+    # “笔”字在字符串中的下标  
+    biindex = tradstr.index('\xb1\xca')  
+    # 除去“笔”  
+    tradstr = tradstr[:biindex]  
+    # 判断是否有“万”字  
+    if '\xcd\xf2' in tradstr:  
+        # “万”字在字符串中的下标  
+        wanindex = tradstr.index('\xcd\xf2')  
+        # 除去“万”字  
+        tradstr = tradstr[:wanindex]  
+        tradnum = tradnum + string.atof(tradstr) * 10000  
+    else:  
+        # 没有“万”字  
+        tradnum = tradnum + string.atof(tradstr)  
+  
+# 天猫电器城无评论数信息  
+revinum = 0  
+if review:  
+    # 在搜索页无法获取评论数详细数字，需转化  
+    revistr = str(review[0].encode(sys.getfilesystemencoding()))  
+    item['review'] = revistr  
+    # 判断是否有“万”字  
+    if '\xcd\xf2' in revistr:  
+        # “万”字在字符串中的下标  
+        wanindex2 = revistr.index('\xcd\xf2')  
+        # 除去“万”字  
+        revistr = revistr[:wanindex2]  
+        revinum = revinum + string.atof(revistr) * 10000  
+    else:  
+        # 没有“万”字  
+        revinum = revinum + string.atof(revistr)  
+  
+# 计算评分  
+score = revinum + (tradnum * 2)  
+item['score'] = round(score)  
+yield(item)  </text>
+</view>
+<view>
+  <text class="text">一页商品信息是不够的，因此我们观察后两页url可以发现，“s=60”表示第二页，“s=120”表示第三页，且“q=”后面的信息为商品关键字信息。因此我们可以依此设置后两页url并进行递归实现对后两页商品信息的自动爬取。</text>
+</view>
+<view>
+  <text class="code"># 提取商品名  
+good = response.url[(response.url.index("q=") + 2):response.url.index("&type=p&v")]  
+next_page_urls = [  
+    "https://list.tmall.com/search_product.htm?spm=a220m.1000858.0.0.0HVJLN&s=60&q=" + good + "&sort=s&style=g&from=mallfp..pc_1_searchbutton&type=pc#J_Filter",  
+    "https://list.tmall.com/search_product.htm?spm=a220m.1000858.0.0.Zt2HlG&s=120&q=" + good + "&sort=s&style=g&from=mallfp..pc_1_searchbutton&type=pc#J_Filter"  
+]  
+# 递归获取后两页  
+for next_page_url in next_page_urls:  
+    yield Request(next_page_url, callback=self.parse)
+</text>
+</view>
+<view>
+  <text class="text">爬虫构建完毕，在根目录建立runscrapy.py并输入以下代码后，执行该文件即可实现爬取相关信息并存储信息至根目录goods.csv的功能。</text>
+</view>
+<view>
+  <text class="code">from scrapy import cmdline  
+  
+cmdline.execute("scrapy crawl FindGoods".split())</text>
+</view>
+<view>
+  <text class="text">爬虫功能构建完毕，利用Tkinter构建GUI请见下一篇博文：</text>
+</view>
+<view>
+  <text class="text">Scrapy爬虫+Tkinter爬取天猫热门商品（三）</text>
+</view>

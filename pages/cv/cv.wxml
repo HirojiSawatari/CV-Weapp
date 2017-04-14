@@ -1,1 +1,72 @@
-<text>待建设</text>
+<image src="/images/ht3.jpg" class="pic" mode="aspectFit"></image>
+<view class="title">
+  <text class="text">基本信息</text>
+</view>
+<view class="detail">
+  <text class="text">姓名：何韬</text>
+  <text class="text">籍贯：安徽望江</text>
+  <text class="text">出生年月：1993年7月</text>
+  <text class="text">手机：186-5562-9450</text>
+  <text class="text">电子邮箱：ka_tou@katouspace.com</text>
+  <text class="text">个人主页：http://www.katouspace.com</text>
+  <text class="text">GitHub主页：https://github.com/HirojiSawatari</text>
+</view>
+
+<view class="title">
+  <text class="text">教育背景</text>
+</view>
+<view class="schdetail">
+  <view class="schtext">
+    <text class="sch">南京师范大学</text>
+    <text class="sub">地图学与地理信息系统</text>
+    <text class="bac">硕士研究生</text>
+    <text class="yea">2015-2018</text>
+  </view>
+  <image class="logo" src="/images/nnu.png" mode="aspectFit"></image>
+</view>
+<view class="schdetail">
+  <view class="schtext">
+    <text class="sch">北京大学</text>
+    <text class="sub">大气与海洋科学</text>
+    <text class="bac">委托培养</text>
+    <text class="yea">2016-2018</text>
+  </view>
+  <image class="logo" src="/images/pku.png" mode="aspectFit"></image>
+</view>
+<view class="schdetail">
+  <view class="schtext">
+    <text class="sch">辽宁师范大学</text>
+    <text class="sub">地理信息系统 / 日语（辅修）</text>
+    <text class="bac">本科</text>
+    <text class="yea">2011-2015</text>
+  </view>
+  <image class="logo" src="/images/lnnu.png" mode="aspectFit"></image>
+</view>
+
+<view class="title">
+  <text class="text">主要技能及优势</text>
+</view>
+<view class="detail">
+  <text class="texttitle">外语能力</text>
+  <text class="text">· 英语：CET6；</text>
+  <text class="text">· 日语：日语专科学历辅修证书，具有N3水平的日语会话以及读写能力。</text>
+  <text class="texttitle">编程能力</text>
+  <text class="text">· 有C、C#、Java、Python等计算机编程语言开发经验；</text>
+  <text class="text">· 有使用MATLAB、NCL等语言进行气象大数据分析的经验；</text>
+  <text class="text">· 有利用ASP.NET技术开发网站的经验；</text>
+  <text class="text">· 熟悉ArcEngine、SuperMap iObjects等GIS组件库，并有实际开发经验；</text>
+  <text class="text">· 熟悉Linux环境下的编程和调试，并有数年使用经验；</text>
+  <text class="text">· 熟悉Android开发，并有多种开发工具包的使用经验。</text>
+  <text class="texttitle">其他技能</text>
+  <text class="text">· 熟练使用ArcGIS、MapInfo、SuperMap iDesktop等GIS平台软件进行空间分析及制图；</text>
+  <text class="text">· 有操作ENVI等遥感图像处理软件进行图像处理的经验；</text>
+  <text class="text">· 熟练使用Adobe Photoshop等图像处理软件。</text>
+</view>
+
+<view class="title">
+  <text class="text">个人获奖经历</text>
+</view>
+<view class="detail">
+  <text class="text">· 工信部第四届“蓝桥杯”全国软件和信息技术专业人才大赛C/C++组个人赛辽宁省三等奖；</text>
+  <text class="text">· 工信部第五届“蓝桥杯”全国软件和信息技术专业人才大赛C/C++组个人赛辽宁省一等奖，全国总决赛三等奖。</text>
+</view>

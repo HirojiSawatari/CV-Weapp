@@ -2,8 +2,8 @@ Page({
   data: {
     title: '联系我',
     myInfo: {
-      phone: '18655629450',
-      email: 'ka_tou@outlook.com',
+      phone: '186-5562-9450',
+      email: 'ka_tou@katouspace.com',
       qrcode: '../../images/qrcode.jpg'
     }
   },
