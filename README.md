@@ -1,10 +1,7 @@
 CV-Weapp
 ========
-This is a WeChat WeApp for my curriculum vitae, including my GitHub, CSDN blog, personal homepage and so on.
+This is a WeChat mini program for my curriculum vitae, including my GitHub, CSDN blog, personal homepage and so on.
 
-My developer account don't have the permission of publishing WeChat WeApp, so this WeApp is being abandoned now.
+Now you can input “KTCV” in WeChat to get this mini program.
 
-<img src='mdimage/image01.png' height='300px'/>
-<img src='mdimage/image02.png' height='300px'/>
-<img src='mdimage/image03.png' height='300px'/>
-<img src='mdimage/image04.png' height='300px'/>
+<img src='mdimage/image01.png' height='300px'/><img src='mdimage/image02.png' height='300px'/><img src='mdimage/image03.png' height='300px'/><img src='mdimage/image04.png' height='300px'/><img src='mdimage/image05.png' height='300px'/><img src='mdimage/image06.png' height='300px'/>
