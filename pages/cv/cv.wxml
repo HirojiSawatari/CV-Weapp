@@ -1,4 +1,4 @@
-<image src="/images/ht3.jpg" class="pic" mode="aspectFit"></image>
+<image src="/images/ht3.jpeg" class="pic" mode="aspectFit"></image>
 <view class="title">
   <text class="text">基本信息</text>
 </view>
@@ -13,32 +13,54 @@
 </view>
 
 <view class="title">
+  <text class="text">工作经历</text>
+</view>
+<view class="schdetail">
+  <view class="schtext">
+    <text class="sch">高德地图</text>
+    <text class="sub">数据生产部 数据工程师</text>
+    <text class="bac">北京 昌平</text>
+    <text class="yea">2017年5月 - 至今</text>
+  </view>
+  <image class="logo" src="/images/autonavi.png" mode="aspectFit"></image>
+</view>
+<view class="schdetail">
+  <view class="schtext">
+    <text class="sch">阿里巴巴</text>
+    <text class="sub">高德地图 暑期实习生</text>
+    <text class="bac">北京 昌平</text>
+    <text class="yea">2017年5月 - 2017年8月</text>
+  </view>
+  <image class="logo" src="/images/alibaba.png" mode="aspectFit"></image>
+</view>
+
+<view class="title">
   <text class="text">教育背景</text>
 </view>
 <view class="schdetail">
   <view class="schtext">
     <text class="sch">南京师范大学</text>
-    <text class="sub">地图学与地理信息系统</text>
-    <text class="bac">硕士研究生</text>
-    <text class="yea">2015-2018</text>
+    <text class="sub">硕士研究生 地图学与地理信息系统</text>
+    <text class="bac">江苏 南京</text>
+    <text class="yea">2015年 - 2018年</text>
   </view>
   <image class="logo" src="/images/nnu.png" mode="aspectFit"></image>
 </view>
 <view class="schdetail">
   <view class="schtext">
     <text class="sch">北京大学</text>
-    <text class="sub">大气与海洋科学</text>
-    <text class="bac">委托培养</text>
-    <text class="yea">2016-2018</text>
+    <text class="sub">委托培养 大气与海洋科学</text>
+    <text class="bac">北京 海淀</text>
+    <text class="yea">2016年 - 2018年</text>
   </view>
   <image class="logo" src="/images/pku.png" mode="aspectFit"></image>
 </view>
 <view class="schdetail">
   <view class="schtext">
     <text class="sch">辽宁师范大学</text>
-    <text class="sub">地理信息系统 / 日语（辅修）</text>
-    <text class="bac">本科</text>
-    <text class="yea">2011-2015</text>
+    <text class="sub">本科 地理信息系统 / 日语（辅修）</text>
+    <text class="bac">辽宁 大连</text>
+    <text class="yea">2011年 - 2015年</text>
   </view>
   <image class="logo" src="/images/lnnu.png" mode="aspectFit"></image>
 </view>
